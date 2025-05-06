@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudHunt</title>
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #e0e0e0;
+      margin: 0;
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    #app-container {
+      background-color: #f5f5dc;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 1000px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+    }
+
+    .window-bar {
+      background-color: #d2b48c;
+      height: 30px;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      color: #4b3c2a;
+      font-weight: bold;
+      margin: -30px -30px 20px -30px;
+    }
+
+    .button {
+      border-radius: 12px;
+      padding: 10px 20px;
+      background-color: #d2b48c;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 5px;
+      text-decoration: none;
+      display: inline-block;
+      color: #4b3c2a;
+      text-align: center;
+    }
+
+    .button:hover {
+      background-color: #c2a679;
+    }
+
+    .error {
+      color: red;
+    }
+
+    input {
+      display: block;
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    h1, h2 {
+      color: #4b3c2a;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="app-container">
+    <div class="window-bar">StudHunt App</div>
+
+    <!-- MAIN SCREEN -->
+    <div id="main-screen">
+      <h1>WELCOME TO STUDHUNT</h1>
+      <p>
+        Hey 𝗙𝘂𝘁𝘂𝗿𝗲 𝗔𝗰𝗵𝗶𝗲𝘃𝗲𝗿𝘀! Feeling the pressure of 𝗺𝗼𝗰𝗸 𝗲𝘅𝗮𝗺𝘀, 𝗾𝘂𝗶𝘇𝘇𝗲𝘀, and endless quest for knowledge? Fear not, because 𝗦𝘁𝘂𝗱 𝗛𝘂𝗻𝘁 is here to help you reach your destinations! Dive into a treasure trove of studies, lessons, and mind-blowing tips to conquer every academic challenge.
+      </p>
+      <p>
+        But wait... there’s MORE! We know that the next future adventure after graduation is landing that perfect job. That’s why 𝗦𝘁𝘂𝗱 𝗛𝘂𝗻𝘁 goes beyond academics—suggesting exciting job opportunities perfectly tailored for fresh graduates like 𝗬𝗢𝗨!
+      </p>
+
+      <button class="button" onclick="showSignIn()">Sign In</button>
+      <button class="button" onclick="showLogin()">Login</button>
+    </div>
+
+    <!-- SIGN IN SCREEN -->
+    <div id="sign-in-screen" style="display:none;">
+      <h2>Sign In</h2>
+      <input type="text" id="last-name" placeholder="Last Name">
+      <input type="text" id="middle-name" placeholder="Middle Name">
+      <input type="text" id="first-name" placeholder="First Name">
+      <input type="password" id="sign-in-password" placeholder="Password">
+      <input type="password" id="confirm-password" placeholder="Confirm Password">
+      <button class="button" onclick="submitSignIn()">Submit</button>
+      <p id="sign-in-error" class="error"></p>
+      <button class="button" onclick="goToMain()">Back</button>
+    </div>
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" style="display:none;">
+      <h2>Login</h2>
+      <input type="text" id="full-name" placeholder="Full Name">
+      <input type="password" id="login-password" placeholder="Password">
+      <button class="button" onclick="submitLogin()">Login</button>
+      <p id="login-error" class="error"></p>
+      <button class="button" onclick="goToMain()">Back</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" style="display:none;">
+      <h2>Dashboard</h2>
+      <button class="button" onclick="showJobs()">Looking for Jobs</button>
+      <button class="button" onclick="showReviewers()">Looking for Reviewers</button>
+      <button class="button" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- JOBS SCREEN -->
+    <div id="jobs-screen" style="display:none;">
+      <h2>Jobs in the Philippines</h2>
+      <ul>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/teacher-jobs/" target="_blank">Teacher</a></li>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/engineer-jobs/" target="_blank">Engineer</a></li>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/call-center-agent-jobs/" target="_blank">Call Center Agent</a></li>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/police-jobs/" target="_blank">Police</a></li>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/chef-jobs/" target="_blank">Chef</a></li>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/medical-technologist-jobs/" target="_blank">Medical Technologist</a></li>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/security-guard-jobs/" target="_blank">Security Guard</a></li>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/Psychology-jobs/" target="_blank">Psychologis</a></li>
+        <li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/accountant-jobs/" target="_blank">Accountant</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/actor-jobs/" target="_blank">Actor</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/aerospace-engineer-jobs/" target="_blank">Aerospace Engineers</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/agriculture-jobs/" target="_blank">Agriculture as a career</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/agricultural-engineer-jobs/" target="_blank">Agricultural Engineers</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/architect-jobs/" target="_blank">Architects and Landscape Architects</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/art-director-jobs/" target="_blank">Art Director</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/announcer-jobs/" target="_blank">Announcer</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/biochemist-jobs/" target="_blank">Biochemists and Biophysicists</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/biomedical-science-jobs/" target="_blank">Biological and Biomedical Sciences</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/bioinformatics-jobs/" target="_blank">Bioinformatics Scientists</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/biomedical-engineer-jobs/" target="_blank">Biomedical Engineering</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/biostatistician-jobs/" target="_blank">Biostatisticians</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/botanist-jobs/" target="_blank">Botanists</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/broadcast-technician-jobs/" target="_blank">Broadcast and Sound Engineering Technician</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/business-analyst-jobs/" target="_blank">Business and Finance</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/civil-drafter-jobs/" target="_blank">Civil Drafters</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/chemical-engineer-jobs/" target="_blank">Chemical Engineers</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/civil-engineer-jobs/" target="_blank">Civil Engineers</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/computer-research-scientist-jobs/" target="_blank">Computer and Information Research Scientists</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/hardware-engineer-jobs/" target="_blank">Computer Hardware Engineers</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/network-architect-jobs/" target="_blank">Computer Network Architects</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/computer-programming-jobs/" target="_blank">Computer Programming</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/social-service-jobs/" target="_blank">Community and Social Service</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/computer-science-jobs/" target="_blank">Computer Science, Engineering & Technology</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/hospitality-jobs/" target="_blank">Consumer Services, Hospitality, and Tourism</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/technical-support-jobs/" target="_blank">Computer Support Specialists</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/system-analyst-jobs/" target="_blank">Computer Systems Analysts</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/culinary-jobs/" target="_blank">Culinary Arts and Personal Services</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/dancer-jobs/" target="_blank">Dancers and Choreographers</a></li>
+<li><a class="button" href="https://www.jobstreet.com.ph/en/job-search/database-administrator-jobs/" target="_blank">Database Administrators</a></li>
+
+
+        <!-- JOBS SCREEN -->
+<div id="jobs-screen" style="display:none;">
+    <h2>Career Options</h2>
+
+    </ul>
+    
+    <button class="button" onclick="goToDashboard()">Back</button>
+    </div>
+
+    <!-- REVIEWERS SCREEN -->
+    <div id="reviewers-screen" style="display:none;">
+      <h2>College Courses / Strands</h2>
+      <ul>
+        <li><a class="button" href="https://www.youtube.com/results?search_query=humss+lessons" target="_blank">HUMSS Lessons</a></li>
+        <li><a class="button" href="https://www.youtube.com/results?search_query=stem+lessons" target="_blank">STEM Lessons</a></li>
+        <li><a class="button" href="https://www.youtube.com/results?search_query=abm+lessons" target="_blank">ABM Lessons</a></li>
+        <li><a class="button" href="https://www.youtube.com/results?search_query=gas+strand+lessons" target="_blank">GAS Lessons</a></li>
+      </ul>
+      <button class="button" onclick="goToDashboard()">Back</button>
+    </div>
+  </div>
+
+  <script>
+    function showSignIn() {
+      hideAll();
+      document.getElementById('sign-in-screen').style.display = 'block';
+    }
+
+    function showLogin() {
+      hideAll();
+      document.getElementById('login-screen').style.display = 'block';
+    }
+
+    function goToMain() {
+      hideAll();
+      document.getElementById('main-screen').style.display = 'block';
+      clearInputs();
+    }
+
+    function submitSignIn() {
+      const lastName = document.getElementById('last-name').value;
+      const middleName = document.getElementById('middle-name').value;
+      const firstName = document.getElementById('first-name').value;
+      const password = document.getElementById('sign-in-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (!lastName || !middleName || !firstName || !password || !confirmPassword) {
+        document.getElementById('sign-in-error').innerText = "All fields must be filled.";
+        return;
+      }
+      if (password !== confirmPassword) {
+        document.getElementById('sign-in-error').innerText = "Passwords do not match.";
+        return;
+      }
+
+      const fullName = `${firstName} ${middleName} ${lastName}`;
+      localStorage.setItem('studhunt-user', JSON.stringify({ fullName, password }));
+      localStorage.setItem('logged-in', 'true');
+      clearInputs();
+      goToDashboard();
+    }
+
+    function submitLogin() {
+      const fullName = document.getElementById('full-name').value;
+      const password = document.getElementById('login-password').value;
+      const savedUser = JSON.parse(localStorage.getItem('studhunt-user'));
+
+      if (savedUser && fullName === savedUser.fullName && password === savedUser.password) {
+        localStorage.setItem('logged-in', 'true');
+        clearInputs();
+        goToDashboard();
+      } else {
+        document.getElementById('login-error').innerText = "Invalid credentials.";
+      }
+    }
+
+    function clearInputs() {
+      document.querySelectorAll('input').forEach(input => input.value = '');
+      document.getElementById('sign-in-error').innerText = '';
+      document.getElementById('login-error').innerText = '';
+    }
+
+    function goToDashboard() {
+      hideAll();
+      document.getElementById('dashboard').style.display = 'block';
+    }
+
+    function showJobs() {
+      hideAll();
+      document.getElementById('jobs-screen').style.display = 'block';
+    }
+
+    function showReviewers() {
+      hideAll();
+      document.getElementById('reviewers-screen').style.display = 'block';
+    }
+
+    function logout() {
+      localStorage.removeItem('logged-in');
+      goToMain();
+    }
+
+    function hideAll() {
+      const screens = document.querySelectorAll('div[id$="-screen"], #main-screen, #dashboard');
+      screens.forEach(screen => screen.style.display = 'none');
+    }
+
+    window.onload = function () {
+      if (localStorage.getItem('logged-in') === 'true') {
+        goToDashboard();
+      } else {
+        goToMain();
+      }
+    }
+  </script>
+
+</body>
+</html>
